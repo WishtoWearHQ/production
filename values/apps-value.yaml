@@ -8,7 +8,7 @@ applications:
       source:
         path: apps
         repoURL: https://github.com/WishtoWearHQ/production.git
-        targetRevision: master
+        targetRevision: main
         directory:
           recurse: true
           jsonnet: {}
