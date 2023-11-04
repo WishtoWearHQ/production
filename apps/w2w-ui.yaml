@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: w2w-ui
     app.kubernetes.io/part-of: w2w-ui
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: w2w-ui
