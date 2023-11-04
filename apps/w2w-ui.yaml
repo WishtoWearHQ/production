@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: w2w-ui
+  namespace: w2w-ui
+  labels:
+    app.kubernetes.io/name: w2w-ui
+    app.kubernetes.io/part-of: w2w-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: w2w-ui
+  template:
+    metadata:
+      labels:
+        app: w2w-ui
+    spec:
+      containers:
+        - name: w2w-ui
+          image: 095336020383.dkr.ecr.eu-west-2.amazonaws.com/w2w-ui:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: JWT_SECRET
+              value: "w2w-secret"
+            - name: MONGO_URL
+              value: "mongodb://127.0.0.1:27017/w2w"
+            - name: MAIL_HOST
+              value: "smtp.gmail.com"
+            - name: MAIL_USER
+              value: "email_username"
+            - name: MAIL_PASS
+              value: "your_app_password"
+            - name: MAIL_FROM
+              value: "noreply@wishtowear.com"
+            - name: MAIL_PORT
+              value: "587"
+            - name: FRONTEND_DOMAIN
+              value: "http://localhost:3000"
